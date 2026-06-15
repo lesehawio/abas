@@ -2,235 +2,410 @@
 <html lang="fa">
 <head>
     <meta charset="UTF-8">
-    <title>مصاحبه با عباس - خودشناسی و مسیر شغلی</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>عباس جان · یه گفتگوی ساده</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
-            background: #d9e2ec;
-            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background: #f2ece4;
+            font-family: 'Segoe UI', 'Tahoma', system-ui, sans-serif;
             direction: rtl;
-            padding: 25px 15px;
+            padding: 1rem;
+            min-height: 100vh;
         }
-        .card {
-            max-width: 850px;
+
+        .gentle-card {
+            max-width: 750px;
             margin: 0 auto;
-            background: white;
-            border-radius: 40px;
-            box-shadow: 0 20px 35px rgba(0,0,0,0.2);
+            background: #ffffff;
+            border-radius: 2rem;
+            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
             overflow: hidden;
         }
-        .header {
-            background: #1e3c5c;
-            color: white;
-            padding: 28px 25px;
+
+        /* هدر با عکس زمینه */
+        .warm-header {
+            background-image: url('');
+            background-size: cover;
+            background-position: center;
+            background-color: #4a3020;
             text-align: center;
+            padding: 2rem 1.5rem 1.8rem;
+            position: relative;
+            border-bottom: 3px solid #f3bc6c;
         }
-        .header h1 {
-            font-size: 2rem;
-        }
-        .questions-area {
-            padding: 30px 30px 20px;
-            background: #fefcf5;
-        }
-        .q-item {
-            background: #f0f4fa;
-            margin-bottom: 30px;
-            border-radius: 28px;
-            padding: 18px 22px;
-            border-right: 6px solid #1e3c5c;
-            transition: 0.1s;
-        }
-        .q-text {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: #0a2b44;
-            margin-bottom: 12px;
-        }
-        .q-input {
+
+        .warm-header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            padding: 12px 16px;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.35);
+            z-index: 1;
+        }
+
+        .warm-header > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* لوگوی خیلی بزرگ و جان‌دار */
+        .talking-logo {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 1rem;
+            background: rgba(255, 245, 225, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border: 3px solid #ffdd99;
+            box-shadow: 0 0 25px rgba(243, 188, 108, 0.5);
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .talking-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .talking-logo span {
+            font-size: 5.5rem;
+        }
+
+        /* حباب گفتگوی لوگو */
+        .logo-speech-bubble {
+            background: rgba(255, 250, 240, 0.95);
+            backdrop-filter: blur(8px);
+            padding: 0.7rem 1.2rem;
+            border-radius: 2rem;
+            border-top-right-radius: 0.5rem;
+            max-width: 85%;
+            margin: 0.5rem auto 0;
+            display: inline-block;
+            font-size: 0.9rem;
+            color: #5c3e2b;
+            font-weight: 500;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+            animation: softPop 0.4s ease-out;
+        }
+
+        @keyframes softPop {
+            0% {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .warm-header h1 {
+            color: #fff2e0;
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-top: 0.3rem;
+        }
+
+        .warm-header p {
+            color: #f3dcb5;
+            font-size: 0.85rem;
+        }
+
+        /* اسکرول سوالات */
+        .questions-scroll {
+            padding: 1.5rem 1.8rem 2rem;
+            max-height: 58vh;
+            overflow-y: auto;
+            background: #fefbf7;
+        }
+
+        .question-block {
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eedbcb;
+        }
+
+        .question-block:last-child {
+            border-bottom: none;
+        }
+
+        .q-num {
+            font-size: 0.7rem;
+            color: #c0814b;
+            background: #f7efe6;
+            display: inline-block;
+            padding: 0.2rem 0.9rem;
+            border-radius: 20px;
+            margin-bottom: 0.5rem;
+        }
+
+        .q-text {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #3b2a1d;
+            margin-bottom: 0.7rem;
+            line-height: 1.45;
+        }
+
+        .soft-input {
+            width: 100%;
+            padding: 0.9rem 1.1rem;
             font-size: 1rem;
-            border: 2px solid #cbdbe2;
-            border-radius: 28px;
             font-family: inherit;
             background: white;
-        }
-        textarea.q-input {
+            border: 1px solid #e7d5c4;
+            border-radius: 1.5rem;
+            transition: 0.2s;
             resize: vertical;
-            min-height: 70px;
         }
-        .save-hint {
-            font-size: 0.7rem;
-            color: #2c6e2c;
-            margin-top: 8px;
+
+        .soft-input:focus {
+            border-color: #d9995f;
+            outline: none;
+            background: #fffefa;
+            box-shadow: 0 0 0 2px rgba(217, 153, 95, 0.1);
+        }
+
+        textarea.soft-input {
+            min-height: 75px;
+        }
+
+        /* دکمه‌های ساده پایین */
+        .soft-actions {
+            background: #f5ede3;
+            padding: 1rem 1.5rem;
             display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .status-badge {
-            background: #cfdec7;
-            border-radius: 30px;
-            padding: 3px 12px;
-            font-size: 0.7rem;
-            display: inline-block;
-        }
-        .action-bar {
-            background: #e6edf4;
-            padding: 18px 30px;
-            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
             flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            border-top: 1px solid #cdd9ed;
+            border-top: 1px solid #e5d5c2;
         }
-        button {
-            background: #1e3c5c;
+
+        .gentle-btn {
+            background: #e2cfbc;
             border: none;
-            color: white;
-            padding: 9px 24px;
-            border-radius: 60px;
-            font-size: 0.9rem;
-            font-weight: bold;
+            padding: 0.5rem 1.2rem;
+            border-radius: 2rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #4a3525;
             cursor: pointer;
-            margin: 5px;
             transition: 0.2s;
         }
-        button:hover {
-            background: #0f2c46;
-            transform: scale(0.97);
+
+        .gentle-btn:hover {
+            background: #d1bba6;
         }
-        .export-btn {
-            background: #2c6e3c;
+
+        .primary-btn {
+            background: #c38b5c;
+            color: white;
         }
+
         .reset-btn {
-            background: #a5512b;
+            background: #eedbcb;
+            color: #9b5a3e;
         }
+
         .footer-note {
-            background: #eef3fc;
+            background: #faf3ea;
             text-align: center;
-            padding: 14px;
-            font-size: 0.75rem;
-            color: #2c4a6e;
+            padding: 0.7rem;
+            font-size: 0.65rem;
+            color: #9b7a60;
+        }
+
+        .questions-scroll::-webkit-scrollbar {
+            width: 5px;
+        }
+        .questions-scroll::-webkit-scrollbar-track {
+            background: #f0e5da;
+        }
+        .questions-scroll::-webkit-scrollbar-thumb {
+            background: #cfb69b;
+            border-radius: 10px;
+        }
+
+        @media (max-width: 550px) {
+            .talking-logo {
+                width: 150px;
+                height: 150px;
+            }
+            .talking-logo span {
+                font-size: 4rem;
+            }
+            .logo-speech-bubble {
+                font-size: 0.75rem;
+                max-width: 90%;
+            }
+            .q-text {
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
 <body>
-<div class="card">
-    <div class="header">
-        <h1>🎤 گفتگوی واقعی با عباس</h1>
-        <p>به هر سوال آروم جواب بده | بعد از پر کردن، دکمه خروجی رو بزن و فایل رو برای [اسم من] بفرست</p>
-    </div>
-    <div class="questions-area" id="questionsContainer"></div>
-    <div class="action-bar">
-        <div>
-            <button id="downloadJsonBtn" class="export-btn">📥 خروجی JSON (برای من بفرست)</button>
-            <button id="downloadCsvBtn">📊 خروجی CSV (Excel)</button>
+<div class="gentle-card">
+    <div class="warm-header" id="headerBg">
+        <div class="talking-logo" id="logoBox">
+            <span>🌿</span>
         </div>
-        <button id="clearAllBtn" class="reset-btn">🗑️ پاک کردن همه جواب‌ها</button>
+        <div class="logo-speech-bubble" id="speechBubble">
+            سلام عباس جان 🌸
+        </div>
+        <h1>چند تا سوال از تو</h1>
+        <p>فقط راحت باش و هر جور دوست داری جواب بده</p>
+    </div>
+
+    <div class="questions-scroll" id="questionsContainer">
+        <!-- سوالات اینجا میاد -->
+    </div>
+
+    <div class="soft-actions">
+        <button id="exportJsonBtn" class="gentle-btn primary-btn">📥 بگیر و بفرست برام (JSON)</button>
+        <button id="exportCsvBtn" class="gentle-btn">📊 بگیر CSV</button>
+        <button id="resetBtn" class="gentle-btn reset-btn">🗑️ پاک کردن همه</button>
     </div>
     <div class="footer-note">
-        🔐 همه چیز فقط در مرورگر خودت ذخیره میشه. بعد از جواب دادن، روی «خروجی JSON» کلیک کن، فایل رو ذخیره کن و برام بفرست.
+        💾 هر چی بنویسی خودکار ذخیره میشه · بعداً دکمه رو بزن و برام بفرست
     </div>
 </div>
 
 <script>
-    // ---------- لیست نهایی تمام سوالات (بر اساس درخواست شما) ----------
+    // ====== سوالات ساده و کامل ======
     const allQuestions = [
-        "🧠 اگر پنج سال دیگه همه چیز عالی پیش رفته باشه، دوست داری زندگیت چه شکلی باشه؟",
-        "🧠 دوست داری مردم تو رو به چی بشناسن؟",
-        "🧠 دوست داری تو چه نقشی تو جامعه یا بین آدما دیده بشی؟",
-        "🧠 موفقیت برای تو دقیقاً یعنی چی؟",
-        "💼 اگر پول اصلاً مهم نبود، دوست داشتی چیکار کنی؟",
-        "💼 چه کاری هست که وقتی انجامش میدی زمان یادت میره؟",
-        "💼 بیشتر دوست داری: کار فنی و عملی؟ کار کامپیوتری و دیجیتال؟ کار مدیریتی؟ کار آزاد؟",
-        "💼 دوست داری برای خودت کار کنی یا زیر دست کسی باشی؟",
-        "💼 دوست داری یه روز صاحب چی باشی؟ (مغازه، شرکت، تیم، پروژه)",
-        "⚡ چه کارهایی هست که از انجامشون حالت بد میشه؟",
-        "⚡ از چه نوع زندگی‌ای بدت میاد؟",
-        "⚡ بیشتر از چی فرار می‌کنی؟ (بینظمی، یکنواختی، فشار، دستور گرفتن...)",
-        "⚡ چه چیزهایی بهت حس قدرت میدن؟",
-        "🧩 بچگی دوست داشتی چی بشی؟",
-        "🧩 اولین چیزی که فکر کردی «من توش خوبم» چی بوده؟",
-        "🧩 تا حالا کی بیشتر از همه بهت حس «موفق بودن» داده؟",
-        "🎯 اگر ۱۰ میلیارد پول داشتی و هیچ محدودیتی نبود، روزت چطور می‌گذشت؟",
-        "🎯 صبح‌ها دوست داری کجا بیدار شی و با چه زندگی‌ای روبرو شی؟",
-        "🎯 دوست داری چند نفر زیر دستت کار کنن یا تنهایی جلو بری؟",
-        "🎯 زندگی آرومت رو چطور تصور می‌کنی؟",
-        "❤️ برات مهم‌تره: پول، احترام، آزادی یا امنیت؟",
-        "❤️ چه چیزی باعث میشه به یه آدم افتخار کنی؟",
-        "❤️ توی زندگی از چی بیشتر از همه بدت میاد که اتفاق بیفته؟"
+        "اگر پنج سال دیگه همه چیز عالی پیش رفته باشه، دوست داری زندگیت چه شکلی باشه؟",
+        "دوست داری مردم تو رو به چی بشناسن؟",
+        "دوست داری تو چه نقشی تو جامعه یا بین آدما دیده بشی؟",
+        "موفقیت برای تو دقیقاً یعنی چی؟",
+        "اگر پول اصلاً مهم نبود، دوست داشتی چیکار کنی؟",
+        "چه کاری هست که وقتی انجامش میدی زمان یادت میره؟",
+        "بیشتر دوست داری: کار فنی و عملی؟ کار کامپیوتری؟ کار مدیریتی؟ کار آزاد؟",
+        "دوست داری برای خودت کار کنی یا زیر دست کسی باشی؟",
+        "دوست داری یه روز صاحب چی باشی؟ (مغازه، شرکت، تیم، پروژه)",
+        "چه کارهایی هست که از انجامشون حالت بد میشه؟",
+        "از چه نوع زندگی‌ای بدت میاد؟",
+        "بیشتر از چی فرار می‌کنی؟ (بی‌نظمی، یکنواختی، فشار، دستور گرفتن...)",
+        "چه چیزهایی بهت حس قدرت میدن؟",
+        "بچگی دوست داشتی چی بشی؟",
+        "اولین چیزی که فکر کردی «من توش خوبم» چی بوده؟",
+        "تا حالا کی بیشتر از همه بهت حس «موفق بودن» داده؟",
+        "اگر ۱۰ میلیارد پول داشتی و هیچ محدودیتی نبود، روزت چطور می‌گذشت؟",
+        "صبح‌ها دوست داری کجا بیدار شی و با چه زندگی‌ای روبرو شی؟",
+        "دوست داری چند نفر زیر دستت کار کنن یا تنهایی جلو بری؟",
+        "زندگی آرومت رو چطور تصور می‌کنی؟",
+        "برات مهم‌تره: پول، احترام، آزادی یا امنیت؟",
+        "چه چیزی باعث میشه به یه آدم افتخار کنی؟",
+        "توی زندگی از چی بیشتر از همه بدت میاد که اتفاق بیفته؟"
     ];
 
-    // کلید ذخیره در localStorage
-    const STORAGE_KEY = "abbas_answers_map";
+    const STORAGE_KEY = "abbas_gentle_answers";
+    let answers = {};
+    let messageInterval;
 
-    // بارگذاری جواب‌های ذخیره شده (اگر قبلاً جواب داده بود)
-    function loadStoredAnswers() {
-        const stored = localStorage.getItem(STORAGE_KEY);
-        if (stored) {
-            try {
-                return JSON.parse(stored);
-            } catch(e) { return {}; }
+    // پیام‌های محبت‌آمیز لوگو برای راهنمایی عباس
+    const encouragingMessages = [
+        "🌸 سلام عباس جان، خوش اومدی",
+        "📝 هر سوال رو بخون، هر چی دلت میخواد بنویس",
+        "😊 نگران نباش، هیچ جواب درست یا غلطی وجود نداره",
+        "🍃 فقط خودت باش، راحت و صادق",
+        "💭 میتونی هر وقت خواستی برگردی و جوابت رو عوض کنی",
+        "🌟 چقدر خوبه که داری به این سوالا فکر می‌کنی",
+        "☕️ یه نفس عمیق بکش، بعد ادامه بده",
+        "💛 من اینجام کنارت، هر چی نیاز داشتی",
+        "📖 ببین به کجا رسیدی، به خودت افتخار کن",
+        "🎁 راستشو بگو، بهترین هدیه برای خودته",
+        "🕊️ آروم آروم برو، عجله نیست",
+        "❤️ هر کلمه‌ای که مینویسی ارزشمنده"
+    ];
+
+    let currentMessageIndex = 0;
+
+    function updateSpeechBubble() {
+        const bubble = document.getElementById("speechBubble");
+        if (bubble) {
+            bubble.style.opacity = "0";
+            setTimeout(() => {
+                bubble.textContent = encouragingMessages[currentMessageIndex % encouragingMessages.length];
+                bubble.style.opacity = "1";
+                bubble.style.animation = "none";
+                bubble.offsetHeight;
+                bubble.style.animation = "softPop 0.4s ease-out";
+                currentMessageIndex++;
+            }, 200);
         }
-        return {};
     }
 
-    // ذخیره کل جواب‌ها در localStorage
-    function saveAllAnswers(answersMap) {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(answersMap));
+    function startMessageRotation() {
+        updateSpeechBubble();
+        messageInterval = setInterval(() => {
+            updateSpeechBubble();
+        }, 18000);
     }
 
-    // رندر کردن کل سوالات به صورت داینامیک
+    function loadAnswers() {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved) {
+            try {
+                answers = JSON.parse(saved);
+            } catch(e) { answers = {}; }
+        } else {
+            answers = {};
+        }
+    }
+
+    function saveAllAnswers() {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(answers));
+    }
+
     function renderQuestions() {
         const container = document.getElementById("questionsContainer");
-        const savedAnswers = loadStoredAnswers();
-        container.innerHTML = "";
+        if (!container) return;
 
-        allQuestions.forEach((q, index) => {
-            const qDiv = document.createElement("div");
-            qDiv.className = "q-item";
-            const qId = `q_${index}`;
-            const savedValue = savedAnswers[index] !== undefined ? savedAnswers[index] : "";
-
-            // تشخیص اینکه ورودی معمولی باشه یا textarea (برای جواب‌های بلندتر)
-            const isLong = q.includes("زندگی‌ات چه شکلی") || q.includes("۱۰ میلیارد") || q.includes("روزت چطور");
-            const inputEl = isLong 
-                ? `<textarea class="q-input" id="${qId}" rows="3" placeholder="جوابت رو بنویس...">${escapeHtml(savedValue)}</textarea>`
-                : `<input type="text" class="q-input" id="${qId}" value="${escapeHtml(savedValue)}" placeholder="اینجا بنویس...">`;
+        let html = '';
+        for (let i = 0; i < allQuestions.length; i++) {
+            const savedVal = answers[i] || '';
+            const isLong = allQuestions[i].includes("۱۰ میلیارد") || allQuestions[i].includes("زندگیت چه شکلی");
+            const inputField = isLong
+                ? `<textarea class="soft-input" id="answer_${i}" rows="3" placeholder="جوابت رو بنویس...">${escapeHtml(savedVal)}</textarea>`
+                : `<input type="text" class="soft-input" id="answer_${i}" value="${escapeHtml(savedVal)}" placeholder="جوابت رو بنویس...">`;
             
-            qDiv.innerHTML = `
-                <div class="q-text">${index+1}. ${q}</div>
-                ${inputEl}
-                <div class="save-hint">
-                    <span class="status-badge" id="status_${qId}">${savedValue ? "✓ ذخیره شده" : "❌ بدون جواب"}</span>
-                    <span style="font-size:0.7rem;">✍️ به محض تایپ، جواب ذخیره میشه</span>
+            html += `
+                <div class="question-block">
+                    <div class="q-num">سوال ${i+1} از ${allQuestions.length}</div>
+                    <div class="q-text">${escapeHtml(allQuestions[i])}</div>
+                    ${inputField}
                 </div>
             `;
-            container.appendChild(qDiv);
+        }
 
-            const inputField = document.getElementById(qId);
-            // رویداد ذخیره خودکار هنگام تایپ
-            inputField.addEventListener("input", (function(idx) {
-                return function() {
-                    const currentAnswers = loadStoredAnswers();
-                    currentAnswers[idx] = inputField.value;
-                    saveAllAnswers(currentAnswers);
-                    // بروزرسانی وضعیت
-                    const statusSpan = document.getElementById(`status_${qId}`);
-                    if (statusSpan) {
-                        statusSpan.innerText = inputField.value ? "✓ ذخیره شده" : "❌ بدون جواب";
-                        statusSpan.style.background = inputField.value ? "#bcd9aa" : "#f0cccc";
-                    }
-                };
-            })(index));
-        });
+        container.innerHTML = html;
+
+        for (let i = 0; i < allQuestions.length; i++) {
+            const inputEl = document.getElementById(`answer_${i}`);
+            if (inputEl) {
+                inputEl.addEventListener("input", (function(idx) {
+                    return function() {
+                        answers[idx] = this.value;
+                        localStorage.setItem(STORAGE_KEY, JSON.stringify(answers));
+                    };
+                })(i));
+            }
+        }
     }
 
-    // کمکی برای جلوگیری از XSS
     function escapeHtml(str) {
         if (!str) return "";
         return str.replace(/[&<>]/g, function(m) {
@@ -238,47 +413,20 @@
             if (m === "<") return "&lt;";
             if (m === ">") return "&gt;";
             return m;
-        }).replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, function(c) {
-            return c;
         });
     }
 
-    // گرفتن آبجکت پاسخ‌ها به صورت {0:"پاسخ1", 1:"پاسخ2", ...}
-    function getAllAnswersObject() {
-        const answers = loadStoredAnswers();
-        const fullMap = {};
-        for (let i = 0; i < allQuestions.length; i++) {
-            fullMap[i] = answers[i] || "";
-        }
-        return fullMap;
-    }
-
-    // تبدیل به آرایه پاسخ + سوالات برای CSV
-    function getAnswersArray() {
-        const answersMap = getAllAnswersObject();
-        const result = [];
-        for (let i = 0; i < allQuestions.length; i++) {
-            result.push({
-                شماره: i+1,
-                سوال: allQuestions[i],
-                پاسخ: answersMap[i] || ""
-            });
-        }
-        return result;
-    }
-
-    // دانلود JSON
-    function downloadJSON() {
-        const answersMap = getAllAnswersObject();
-        const finalData = {
-            نام_مصاحبه_شونده: "عباس",
+    function exportJSON() {
+        const exportObj = {
+            نام: "عباس",
             تاریخ: new Date().toLocaleString('fa-IR'),
-            تعداد_سوالات: allQuestions.length,
-            پاسخ‌ها: answersMap,
-            سوالات_و_پاسخ‌ها: allQuestions.map((q, idx) => ({ سوال: q, پاسخ: answersMap[idx] || "" }))
+            پاسخ‌ها: answers,
+            سوالات: allQuestions.map((q, idx) => ({
+                سوال: q,
+                پاسخ: answers[idx] || ""
+            }))
         };
-        const jsonStr = JSON.stringify(finalData, null, 2);
-        const blob = new Blob([jsonStr], {type: "application/json"});
+        const blob = new Blob([JSON.stringify(exportObj, null, 2)], {type: "application/json"});
         const link = document.createElement("a");
         link.href = URL.createObjectURL(blob);
         link.download = `abbas_answers_${new Date().toISOString().slice(0,19)}.json`;
@@ -286,42 +434,66 @@
         URL.revokeObjectURL(link.href);
     }
 
-    // دانلود CSV (برای خواندن در اکسل)
-    function downloadCSV() {
-        const dataRows = getAnswersArray();
-        if (!dataRows.length) return;
-        const headers = ["شماره", "سوال", "پاسخ"];
-        const csvRows = [];
-        csvRows.push(headers.join(","));
-        for (const row of dataRows) {
-            const escapedAnswer = `"${(row.پاسخ || "").replace(/"/g, '""')}"`;
-            csvRows.push(`${row.شماره},"${row.سوال.replace(/"/g, '""')}",${escapedAnswer}`);
+    function exportCSV() {
+        const rows = [["شماره", "سوال", "پاسخ"]];
+        for (let i = 0; i < allQuestions.length; i++) {
+            rows.push([i+1, allQuestions[i], (answers[i] || "").replace(/"/g, '""')]);
         }
-        const blob = new Blob(["\uFEFF" + csvRows.join("\n")], {type: "text/csv;charset=utf-8;"});
+        const csvText = rows.map(row => row.map(cell => `"${cell}"`).join(",")).join("\n");
+        const blob = new Blob(["\uFEFF" + csvText], {type: "text/csv;charset=utf-8;"});
         const link = document.createElement("a");
         link.href = URL.createObjectURL(blob);
-        link.download = `abbas_answers.csv`;
+        link.download = "abbas_answers.csv";
         link.click();
         URL.revokeObjectURL(link.href);
     }
 
-    // ریست کامل
-    function resetAllAnswers() {
-        if (confirm("⚠️ همه جواب‌های عباس پاک میشه! مطمئنی؟ (قابل برگشت نیست)")) {
+    function resetAll() {
+        if (confirm("عباس جان، همه جواب‌هایی که نوشتی پاک میشه. مطمئنی؟")) {
             localStorage.removeItem(STORAGE_KEY);
-            renderQuestions(); // دوباره رندر با جواب خالی
+            answers = {};
+            renderQuestions();
+            // یه پیام محبت‌آمیز خاص
+            const bubble = document.getElementById("speechBubble");
+            if (bubble) {
+                bubble.textContent = "🍃 اشکال نداره، میتونیم از اول بنویسیم";
+                setTimeout(() => {
+                    if (messageInterval) clearInterval(messageInterval);
+                    startMessageRotation();
+                }, 2500);
+            }
         }
     }
 
-    // مقداردهی اولیه و اتصال دکمه‌ها
+    // تنظیم هدر و لوگو
+    function setupHeaderAndLogo() {
+        const headerBgDiv = document.getElementById("headerBg");
+        const backgroundImageUrl = "https://uploadkon.ir/uploads/429215_26شخصی-هنرمند-با-قلم-و.png";
+        if (headerBgDiv) {
+            headerBgDiv.style.backgroundImage = `url('${backgroundImageUrl}')`;
+        }
+
+        const logoBox = document.getElementById("logoBox");
+        const logoImgUrl = "https://uploadkon.ir/uploads/468515_26photo-2026-06-11-21-44-46.png";
+        const testImg = new Image();
+        testImg.onload = function() {
+            logoBox.innerHTML = `<img src="${logoImgUrl}" alt="عباس" style="width:100%; height:100%; object-fit:cover;">`;
+        };
+        testImg.onerror = function() {
+            logoBox.innerHTML = '<span>🌼</span>';
+        };
+        testImg.src = logoImgUrl;
+    }
+
     document.addEventListener("DOMContentLoaded", () => {
+        loadAnswers();
         renderQuestions();
-        const downloadJsonBtn = document.getElementById("downloadJsonBtn");
-        const downloadCsvBtn = document.getElementById("downloadCsvBtn");
-        const clearBtn = document.getElementById("clearAllBtn");
-        if (downloadJsonBtn) downloadJsonBtn.addEventListener("click", downloadJSON);
-        if (downloadCsvBtn) downloadCsvBtn.addEventListener("click", downloadCSV);
-        if (clearBtn) clearBtn.addEventListener("click", resetAllAnswers);
+        setupHeaderAndLogo();
+        startMessageRotation();
+
+        document.getElementById("exportJsonBtn")?.addEventListener("click", exportJSON);
+        document.getElementById("exportCsvBtn")?.addEventListener("click", exportCSV);
+        document.getElementById("resetBtn")?.addEventListener("click", resetAll);
     });
 </script>
 </body>
